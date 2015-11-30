@@ -1,7 +1,6 @@
 //Robbie Mills Button
 
-Button test = new Button(400, 400, 100, 100, 2, "Test");
-Button test2 = new Button(200, 200, 100, 100, 2, "Test2");
+Button[] buttons = new Button[10];
 
 boolean click;
 
@@ -9,29 +8,24 @@ void setup() {
 
   size(800, 600);
   textAlign(CENTER, CENTER);
+
+  buttons[0] = new Button(400, 400, 100, 100, 2, "Test");
+  buttons[1] = new Button(200, 200, 100, 100, 2, "Test2");
 }
 
 void draw() {
 
-  test.drawButton();
-  test2.drawButton();
+  for (int i = 0; i < 2; i++) {
 
-  test.changeColourOnMouseHover(mouseX, mouseY);
-  test2.changeColourOnMouseHover(mouseX, mouseY);
+    buttons[i].drawButton();
+    buttons[i].changeColourOnMouseHover(mouseX, mouseY);
+    buttons[i].buttonPressed();
 
-  test.buttonPressed();
-  test2.buttonPressed();
+    if (buttons[i].buttonPressed()) {
 
-  if (test.buttonPressed()) {
-
-    println("test");
-    click = false;
-  }
-
-  if (test2.buttonPressed()) {
-
-    println("test2");
-    click = false;
+      println(buttons[i].buttonName);
+      click = false;
+    }
   }
 }
 
